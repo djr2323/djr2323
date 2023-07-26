@@ -1,0 +1,20 @@
+
+<form [formGroup]="checkForm" action="" (ngSubmit)="onSubmit()">
+    <div class="select">
+        <label for="camket">Các loại cam kết</label>
+        <select  id="camket" formControlName="camket">
+        <option *ngFor="let camket of camkets" formControlName="camket" value="{{camket}}">
+        {{camket}}
+        </option>
+        </select>
+    </div>
+    <div class="input">
+        <label for="nhapso">Dãy số cần tìm</label>
+        <input formControlName="nhapso" value="" id="nhapso" type="text">
+    </div>
+    <button class="button" type="submit">Tìm kiếm</button>
+</form>
+
+<div class="result" *ngIf="">
+
+</div>
