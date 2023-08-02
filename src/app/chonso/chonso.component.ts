@@ -1,17 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { soDts } from '../sodt';
+import { CommonService } from '../Services/common.service';
 @Component({
   selector: 'app-chonso',
   templateUrl: './chonso.component.html',
   styleUrls: ['./chonso.component.css']
 })
-export class ChonsoComponent {
+export class ChonsoComponent implements OnInit {
   soDts = [...soDts]
+  public counter = 0;
+  public counterBinhPhuong = 0;
   constructor(
     private fb:FormBuilder,
+    private common :CommonService
   ){}
     
+  ngOnInit(): void {
+    this.counter = this.common.counter;
+    this.counterBinhPhuong = this.common.binhPhuong(this.counter);
+    this.common.counter ++
+  }
     checkForm = this.fb.group( {
         camket:'Tất cả',
         nhapso:''
